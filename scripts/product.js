@@ -418,7 +418,7 @@ products.forEach((product) => {
                 Added
             </div>
 
-            <button class="add-to-cart-button">
+            <button class="add-to-cart-button js-add-to-cart-button" data-product-id="${product.id}">
                 <img src="images/icons/icon8-shopping-cart-24.png" alt="">
                 Add to Cart
             </button>
@@ -426,9 +426,7 @@ products.forEach((product) => {
    `;
 });
 
-document.querySelector('.container-grid').innerHTML = productHTML;
-console.log(productHTML);
-
+document.querySelector('.js-container-grid').innerHTML = productHTML;
 // Shuffle Carousole
 
 const carousel = document.querySelectorAll(".carousel");

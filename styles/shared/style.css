@@ -128,9 +128,9 @@
 .cart-quantity {
         color: aliceblue;
         position: absolute;
-        top: -2px;
+        top: -6px;
         left: 40%;
-        width: 19px;
+        width: 28px;
         font-weight: 700;
         text-align: center;
         font-size: 18px;
