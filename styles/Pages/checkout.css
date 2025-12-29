@@ -306,17 +306,18 @@ button:active {
     }
 
     .checkout-product-delivery-date {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .product-description {
         flex-direction: column;
+        padding-right: 2px;
     }
 
     .product-image {
         width: 110px;
         height: 110px;
-        margin-right: 5px;
+        margin-right: 2px;
     }
 
     .product-image img {
@@ -330,18 +331,16 @@ button:active {
 
     .product-quantity {
         font-size: 16px;
+        margin-left: 1px;
     }
 
     .product-quantity span {
         font-size: 16px;
     }
 
-    .product-quantity {
-        font-size: 16px;
-    }
-
     .product-quantity span a {
         margin: 0;
+        font-size: 15px;
     }
 
     .option input {
