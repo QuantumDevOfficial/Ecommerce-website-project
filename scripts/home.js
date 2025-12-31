@@ -23,7 +23,9 @@ function activation(e) {
     activated.classList.remove('activated');
     deactivated.classList.add('activated');
     deactivated.classList.remove('deactivated');
-}
+};
+
+window.activation = activation;
 
 let productHTML = '';
 
