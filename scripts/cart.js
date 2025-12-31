@@ -38,4 +38,15 @@ export function addToCart(productId) {
 
     saveToStorge();
 };
-   
+
+export function removeFromCart(productId) {
+    const updatedCart = [];
+
+    cart.forEach((cartItem)=> {
+        if (cartItem.productId !== productId) {
+            updatedCart.push(cartItem);
+        };
+    });
+
+    cart = updatedCart;
+};

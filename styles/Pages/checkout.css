@@ -185,15 +185,20 @@ main {
     font-size: 18px;
 }
 
-.product-quantity span a {
+.product-quantity-link{
     margin: 0 5px;
     text-decoration: none;
     color: #06b6d4;
     font-weight: 500;
+    cursor: pointer;
 }
 
-.product-quantity span a:hover {
+.product-quantity-link:hover {
     color: #d42806;
+}
+
+.product-quantity-link:active {
+    color: #a31f04;
 }
 
 .products-delivery-option {

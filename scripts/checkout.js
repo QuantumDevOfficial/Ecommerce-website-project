@@ -1,5 +1,5 @@
 import {products} from "./product.js";
-import {cart} from "./cart.js";
+import {cart, removeFromCart,} from "./cart.js";
 
 let cartHTML = '';
 
@@ -30,8 +30,8 @@ cart.forEach((cartItem)=> {
                         <div class="product-price">Gh¢${(cartObject.priceCedis / 100).toFixed(2)}</div>
                         <div class="product-quantity">
                             Quantity:<span>${cartItem.productQuantity}</span>
-                            <span><a href="#">Update</a></span>
-                            <span><a href="#">Delete</a></span>
+                            <span class="product-quantity-link">Update</span>
+                            <span class="product-quantity-link js-delete-link" data-product-id="${cartItem.productId}">Delete</span>
                         </div>
                     </div>
                 </div>
@@ -93,3 +93,11 @@ cart.forEach((cartItem)=> {
 });
 
 document.querySelector('.js-orders-container-grid').innerHTML = cartHTML;
+
+const deleteButton = document.querySelectorAll('.js-delete-link');
+deleteButton.forEach((deleteLink)=> {
+    deleteLink.addEventListener('click', ()=> {
+        const deleteItem = deleteLink.dataset.productId;
+        removeFromCart(deleteItem);
+    });
+});
