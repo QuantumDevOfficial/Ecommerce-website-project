@@ -88,8 +88,13 @@ function updateCartQuantity() {
         cartQuantity += qty.productQuantity;
     });
 
-    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+    if (cartQuantity !== 0) {
+        document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+        document.querySelector('.js-cart-quantity').classList.remove('toggle');
+    };
 };
+
+updateCartQuantity();
 
 const cartButton = document.querySelectorAll('.js-add-to-cart-button');
 cartButton.forEach((button)=> {
