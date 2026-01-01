@@ -49,4 +49,6 @@ export function removeFromCart(productId) {
     });
 
     cart = updatedCart;
+
+    saveToStorge();
 };
