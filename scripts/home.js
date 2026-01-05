@@ -1,5 +1,5 @@
 import {products} from "./product.js";
-import {addToCart, cart} from "./cart.js";
+import {addToCart, updateCartQuantity} from "./cart.js";
 
 
 
@@ -80,19 +80,6 @@ products.forEach((product) => {
 });
 
 document.querySelector('.js-container-grid').innerHTML = productHTML;
-
-
-function updateCartQuantity() {
-    let cartQuantity = 0;
-    cart.forEach((qty)=> {
-        cartQuantity += qty.productQuantity;
-    });
-
-    if (cartQuantity !== 0) {
-        document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
-        document.querySelector('.js-cart-quantity').classList.remove('toggle');
-    };
-};
 
 updateCartQuantity();
 

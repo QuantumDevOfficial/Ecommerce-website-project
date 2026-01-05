@@ -1,8 +1,18 @@
 import {products} from "./product.js";
-import {cart, removeFromCart,} from "./cart.js";
+import {cart, removeFromCart, updateCartQuantity} from "./cart.js";
 
+function updateCheckOutQuantity() {
+        let checkOutQuantity = 0;
+        cart.forEach((qtys)=> {
+            checkOutQuantity += qtys.productQuantity;
+        });
+        
+        document.querySelector('.js-checkout-quantity').innerHTML = `${checkOutQuantity} Items`;
+    };
 
 function renderCheckoutPage() {
+    updateCheckOutQuantity();
+
     if (cart.length === 0) {
         const emptyCart = `
             <div class="empty-cart-container">

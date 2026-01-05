@@ -40,3 +40,15 @@ export function removeFromCart(productId) {
 
     saveToStorge();
 };
+
+export function updateCartQuantity() {
+    let cartQuantity = 0;
+    cart.forEach((qty)=> {
+        cartQuantity += qty.productQuantity;
+    });
+
+    if (cartQuantity !== 0) {
+        document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+        document.querySelector('.js-cart-quantity').classList.remove('toggle');
+    };
+};
