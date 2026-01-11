@@ -291,6 +291,11 @@ button:active {
     background-color: #0a8ba3;
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.3s;
+}
+
 
 /* Mobile Phone size for checkout */
 

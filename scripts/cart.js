@@ -53,3 +53,17 @@ export function updateCartQuantity() {
         document.querySelector('.js-cart-quantity').classList.remove('toggle');
     };
 };
+
+export function updateDeliveryOptionId(deliveryOptionId, productId) {
+    let found;
+    cart.forEach((item)=> {
+        if (productId === item.productId) {
+            found = item;
+        };
+    });
+
+    if (found) {
+        found.deliveryOptionId = deliveryOptionId;
+        saveToStorge();
+    };
+};

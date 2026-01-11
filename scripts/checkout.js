@@ -1,5 +1,5 @@
-import {products, deliveryOptions} from "./product.js";
-import {cart, removeFromCart} from "./cart.js";
+import {products, deliveryOptions} from "./data.js";
+import {cart, removeFromCart, updateDeliveryOptionId} from "./cart.js";
 
 function updateCheckOutQuantity() {
     let checkOutQuantity = 0;
@@ -8,6 +8,37 @@ function updateCheckOutQuantity() {
     });
     
     document.querySelector('.js-checkout-quantity').innerHTML = `${checkOutQuantity} Items`;
+};
+
+function deliveryOptionHTML(cartObject, cartItem) {
+    let html = '';
+    deliveryOptions.forEach((deliveryOption)=> {
+        const today = dayjs();
+        const deliveryDate = today.add(deliveryOption.deliverydays, 'days');
+        const dateFormat = deliveryDate.format('dddd, MMMM D');
+        const priceFormat = deliveryOption.deliveryPrice === 0 ? 'FREE' : `Gh¢${(deliveryOption.deliveryPrice / 100).toFixed(2)}`;
+        const beChecked = deliveryOption.id === cartItem.deliveryOptionId ? 'checked' : '';
+
+        html += `
+            <div class="option js-option" data-product-id="${cartObject.id}" data-delivery-option-id="${deliveryOption.id}">
+                <div>
+                    <input type="radio" name="deliveryoptionId-${cartObject.id}" ${beChecked}>
+                </div>
+
+                <div class="label">
+                    <div class="label-date">
+                        ${dateFormat}
+                    </div>
+
+                    <div class="label-price">
+                        ${priceFormat} - ${deliveryOption.deliverytype}
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    return html;
 };
 
 function renderCheckoutPage() {
@@ -96,39 +127,25 @@ function renderCheckoutPage() {
                 renderCheckoutPage();
             });
         });
-    }
-};
 
-function deliveryOptionHTML(cartObject, cartItem) {
-    let html = '';
-    deliveryOptions.forEach((deliveryOption)=> {
-        const today = dayjs();
-        const deliveryDate = today.add(deliveryOption.deliverydays, 'days');
-        const dateFormat = deliveryDate.format('dddd, MMMM D');
-        const priceFormat = deliveryOption.deliveryPrice === 0 ? 'FREE' : `Gh¢${(deliveryOption.deliveryPrice / 100).toFixed(2)}`;
-        const beChecked = deliveryOption.id === cartItem.deliveryOptionId ? 'checked' : '';
-
-        html += `
-            <div class="option js-option" data-delivery-id="${cartItem.productId}" data-deliveryOption-id="${deliveryOption.id}">
-                <div>
-                    <input type="radio" name="deliveryoptionId-${cartObject.id}" ${beChecked}>
-                </div>
-
-                <div class="label">
-                    <div class="label-date">
-                        ${dateFormat}
-                    </div>
-
-                    <div class="label-price">
-                        ${priceFormat} - Shipping
-                    </div>
-                </div>
-            </div>
-        `;
-    });
-
-    return html;
+        document.querySelectorAll('.js-option').forEach((element)=> {
+            element.addEventListener('click', ()=> {
+                const productId = element.dataset.productId;
+                const deliveryOptionId = element.dataset.deliveryOptionId;
+                updateDeliveryOptionId(deliveryOptionId, productId);
+                
+                if (!document.startViewTransition) {
+                    renderCheckoutPage();
+                }   
+                
+                else {
+                    document.startViewTransition(() => {
+                        renderCheckoutPage();
+                    });
+                };
+            });
+        });
+    };
 };
 
 renderCheckoutPage();
-updateDeliveryOptionId();
