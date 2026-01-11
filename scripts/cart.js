@@ -20,7 +20,8 @@ export function addToCart(productId) {
     else {
         cart.push({
             productId: productId,
-            productQuantity: 1
+            productQuantity: 1,
+            deliveryOptionId: '36c64692'
         });
     };
 

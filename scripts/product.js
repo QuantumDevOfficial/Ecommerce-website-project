@@ -373,3 +373,24 @@ export const products = [
         },
     },
 ];
+
+
+export const deliveryOptions = [
+    {
+        id: "36c64692",
+        deliverydays: 7,
+        deliveryPrice: 0
+    },
+
+    {
+        id: "0d7f9afa",
+        deliverydays: 4,
+        deliveryPrice: 2000
+    },
+
+    {
+        id: "a434b69f",
+        deliverydays: 1,
+        deliveryPrice: 4000
+    }
+];
