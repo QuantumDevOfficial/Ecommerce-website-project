@@ -1,5 +1,6 @@
-import {products, deliveryOptions} from "./data.js";
+import {products, deliveryOptions, getProduct} from "./data.js";
 import {cart, removeFromCart, updateDeliveryOptionId} from "./cart.js";
+import {formatCurrency} from "./utils.js";
 
 function updateCheckOutQuantity() {
     let checkOutQuantity = 0;
@@ -8,6 +9,7 @@ function updateCheckOutQuantity() {
     });
     
     document.querySelector('.js-checkout-quantity').innerHTML = `${checkOutQuantity} Items`;
+    document.querySelector('.js-items').innerHTML = `Items(${checkOutQuantity})`;
 };
 
 function deliveryOptionHTML(cartObject, cartItem) {
@@ -16,7 +18,7 @@ function deliveryOptionHTML(cartObject, cartItem) {
         const today = dayjs();
         const deliveryDate = today.add(deliveryOption.deliverydays, 'days');
         const dateFormat = deliveryDate.format('dddd, MMMM D');
-        const priceFormat = deliveryOption.deliveryPrice === 0 ? 'FREE' : `Gh¢${(deliveryOption.deliveryPrice / 100).toFixed(2)}`;
+        const priceFormat = deliveryOption.deliveryPrice === 0 ? 'FREE' : `Gh¢${formatCurrency(deliveryOption.deliveryPrice)}`;
         const beChecked = deliveryOption.id === cartItem.deliveryOptionId ? 'checked' : '';
 
         html += `
@@ -41,9 +43,51 @@ function deliveryOptionHTML(cartObject, cartItem) {
     return html;
 };
 
+function renderPaymentSummery() {
+    let productsPrice = 0;
+    let deliveryAmount = 0;
+
+    cart.forEach((item)=> {
+        const product = getProduct(item.productId);
+        productsPrice += product.priceCedis * item.productQuantity;
+    });
+
+    // the code below could also work but not healthy for bigger project
+
+    /* cart.forEach((item)=> {
+        const productId = item.productId;
+        const quantity = item.productQuantity;
+        products.forEach((product)=> {
+            if (product.id === productId) {
+                const productAmount = product.priceCedis * quantity;
+                productsPrice += productAmount;
+            };
+        });
+    }); */
+
+    cart.forEach((cartItem)=> {
+        const deliveryOptionId = cartItem.deliveryOptionId;
+        deliveryOptions.forEach((option)=> {
+            if (deliveryOptionId === option.id) {
+                deliveryAmount += option.deliveryPrice;
+            };
+        });
+    });
+
+    const actualProductPrice = deliveryAmount + productsPrice;
+    const taxRate = 0.06;
+    const taxAmount = actualProductPrice * taxRate;
+    const amountPayable = actualProductPrice + taxAmount;
+    document.querySelector('.js-tax-rate').innerHTML = `Tax(${taxRate * 100}%):`
+    document.querySelector('.js-product-price').innerHTML = formatCurrency(productsPrice);
+    document.querySelector('.js-delivery-fee').innerHTML = formatCurrency(deliveryAmount);
+    document.querySelector('.js-actual-product-price').innerHTML = formatCurrency(actualProductPrice);
+    document.querySelector('.js-tax-amount').innerHTML = formatCurrency(taxAmount);
+    document.querySelector('.js-total').innerHTML = formatCurrency(amountPayable);
+};
+
 function renderCheckoutPage() {
     updateCheckOutQuantity();
-
     if (cart.length === 0) {
         const emptyCart = `
             <div class="empty-cart-container">
@@ -124,6 +168,7 @@ function renderCheckoutPage() {
             deleteLink.addEventListener('click', ()=> {
                 const deleteItem = deleteLink.dataset.productId;
                 removeFromCart(deleteItem);
+                renderPaymentSummery();
                 renderCheckoutPage();
             });
         });
@@ -133,6 +178,7 @@ function renderCheckoutPage() {
                 const productId = element.dataset.productId;
                 const deliveryOptionId = element.dataset.deliveryOptionId;
                 updateDeliveryOptionId(deliveryOptionId, productId);
+                renderPaymentSummery();
                 
                 if (!document.startViewTransition) {
                     renderCheckoutPage();
@@ -148,4 +194,5 @@ function renderCheckoutPage() {
     };
 };
 
+renderPaymentSummery()
 renderCheckoutPage();
