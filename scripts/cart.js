@@ -28,6 +28,11 @@ export function addToCart(productId) {
     saveToStorge();
 };
 
+export function resetCart() {
+    cart = [];
+    saveToStorge();
+};
+
 export function removeFromCart(productId) {
     const updatedCart = [];
 

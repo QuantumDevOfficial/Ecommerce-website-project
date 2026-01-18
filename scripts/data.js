@@ -1,3 +1,14 @@
+export const orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+export function saveOrderToStorage() {
+    localStorage.setItem('orders', JSON.stringify(orders));
+}
+
+export function addToOrder(order) {
+    orders.unshift(order);
+    saveOrderToStorage()
+}
+
 export const products = [
     {
         id: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
@@ -145,7 +156,7 @@ export const products = [
     {
         id: "04701903-bc79-49c6-bc11-1af7e3651358",
         image: "../images/products/women-off-shoulder-green-dress.jpg",
-        name: "Women Shoulder Green Dress",
+        name: "Women Off-Shoulder Green Dress",
         priceCedis: 16000,
         rating: {
             stars: "4.5",

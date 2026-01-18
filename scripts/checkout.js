@@ -1,5 +1,5 @@
-import {products, deliveryOptions, getProduct} from "./data.js";
-import {cart, removeFromCart, updateDeliveryOptionId} from "./cart.js";
+import {products, deliveryOptions, getProduct, addToOrder} from "./data.js";
+import {cart, removeFromCart, updateDeliveryOptionId, resetCart} from "./cart.js";
 import {formatCurrency} from "./utils.js";
 
 function updateCheckOutQuantity() {
@@ -43,7 +43,7 @@ function deliveryOptionHTML(cartObject, cartItem) {
     return html;
 };
 
-function renderPaymentSummery() {
+export function renderPaymentSummery() {
     let productsPrice = 0;
     let deliveryAmount = 0;
 
@@ -194,5 +194,62 @@ function renderCheckoutPage() {
     };
 };
 
+export function addOrders() {
+
+    let productsPrice = 0;
+    let deliveryAmount = 0;
+
+    cart.forEach((item)=> {
+        const product = getProduct(item.productId);
+        productsPrice += product.priceCedis * item.productQuantity;
+    });
+
+    let deliveryOption;
+    
+    cart.forEach((cartItem)=> {
+        const deliveryOptionId = cartItem.deliveryOptionId;
+        deliveryOptions.forEach((option)=> {
+            if (deliveryOptionId === option.id) {
+                deliveryAmount += option.deliveryPrice;
+                deliveryOption = option;
+            };
+        });
+    });
+
+    const actualProductPrice = deliveryAmount + productsPrice;
+    const taxRate = 0.06;
+    const taxAmount = actualProductPrice * taxRate;
+    const amountPayable = formatCurrency(actualProductPrice + taxAmount);
+
+    const today = dayjs();
+    const orderDate = today.format('MMMM D');
+    const deliveryDay = today.add(deliveryOption.deliverydays, 'days');
+    const deliveryDayFormat = deliveryDay.format('MMMM D');
+    const orderId = crypto.randomUUID();
+
+    const orderProducts = cart.map((cartItem)=> {
+        return {
+            productId: cartItem.productId,
+            arrivaldate: deliveryDayFormat,
+            productQuantity: cartItem.productQuantity
+        };
+    });
+
+    const orderObject = {
+        id: orderId,
+        orderDate: orderDate,
+        orderPrice: amountPayable,
+        products: orderProducts
+    };
+
+    addToOrder(orderObject);
+    resetCart();
+    window.location.href = 'orders.html';
+};
+
 renderPaymentSummery()
+
+const placeOrderBtn = document.querySelector('.js-place-order-button');
+placeOrderBtn.addEventListener('click', addOrders);
+
 renderCheckoutPage();
