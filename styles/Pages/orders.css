@@ -170,6 +170,12 @@ body {
     max-width: 100%;
 }
 
+.favorites-product-container-grid {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+}
+
 .favorites-product-container-head {
    border-bottom: 1px solid #dedede;
    background-color: #f0f2f2; 
@@ -220,6 +226,7 @@ body {
 }
 
 .favorites-product-name-container {
+    height: 40px;
     font-size: 17px;
     margin-top: 8px;
     margin-bottom: 5px;

@@ -1,5 +1,7 @@
 import {updateCartQuantity} from "./cart.js";
-import {getProduct, orders} from "./data.js";
+import {getProduct, orders, products} from "./data.js";
+import {favorites} from "./favorites.js";
+import {formatCurrency} from "./utils.js";
 
 function renderOrdersPage() {
     let orderHTML = '';
@@ -76,5 +78,65 @@ function renderOrdersPage() {
     document.querySelector('.js-orders-grid').innerHTML = orderHTML;
 };
 
+
+function renderFavoritePage() {
+    const groups = {};
+
+    favorites.forEach((favoriteItem)=> {
+        const productId = favoriteItem.productId;
+        const dateKey = favoriteItem.dateAdded;
+
+        const dateProduct = products.find(product => product.id === productId);
+        if (dateProduct) {
+            if (!groups[dateKey]) {
+                groups[dateKey] = [];
+            };
+
+            groups[dateKey].push(dateProduct);
+        };
+    });
+    
+    let pageHTML = '';
+
+    Object.keys(groups).forEach((date)=> {
+        pageHTML += `
+            <div class="favorites-product-container">
+                <div class="favorites-product-container-head">
+                    <span>Added On:</span> ${date}
+                </div>
+
+                <div class="favorites-product-container-body">
+        `;
+
+        const productOnToday = groups[date];
+        productOnToday.forEach((product)=> {
+            pageHTML += `
+                <div class="favorites-product-container-body-card">
+                    <div class="favorites-product-image-container">
+                        <img src="${product.image}" alt="...">
+                    </div>
+
+                    <div class="favorites-product-container-body-card-detail">
+                        <div class="favorites-product-name-container">${product.name}</div>
+                    <div class="favorites-product-price-container">${formatCurrency(product.priceCedis)}</div>
+                    <div class="favorites-product-checkout-container">
+                        <button class="checkout-now">Checkout Now</button>
+                    </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        pageHTML += `
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    document.querySelector('.favorites-product-container-grid').innerHTML = pageHTML;
+};
+
 updateCartQuantity();
 renderOrdersPage();
+renderFavoritePage()

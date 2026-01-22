@@ -1,5 +1,6 @@
 import {products} from "./data.js";
 import {addToCart, updateCartQuantity} from "./cart.js";
+import {toggleFavorite} from "./favorites.js"
 
 
 
@@ -23,6 +24,8 @@ function activation(e) {
     activated.classList.remove('activated');
     deactivated.classList.add('activated');
     deactivated.classList.remove('deactivated');
+    const productId = e.target.closest('button').dataset.productId;
+    toggleFavorite(productId);
 };
 
 window.activation = activation;
@@ -60,7 +63,7 @@ products.forEach((product) => {
                     <option value="10">10</option>
                 </select>
 
-                <button onclick="activation(event)" class="add-to-favarite">
+                <button onclick="activation(event)" class="add-to-favarite" data-product-id="${product.id}">
                     <img class="activated" src="images/icons/icons8-favorite-24 (2).png" alt="">
                     <img class="deactivated" src="images/icons/icons8-favorite-24.png" alt="">
                 </button>
