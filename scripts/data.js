@@ -12,7 +12,7 @@ export function addToOrder(order) {
 export const products = [
     {
         id: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
-        image: "../images/products/men-black-and-white-graphic-hoodie-plus-joggers-set.jpg",
+        image: "images/products/men-black-and-white-graphic-hoodie-plus-joggers-set.jpg",
         name: "Men Graphic Hoodie plus Joggers - Black & white",
         priceCedis: 12050,
         rating: {
@@ -23,7 +23,7 @@ export const products = [
 
     {
         id: "bc2847e9-5323-403f-b7cf-57fde044a955",
-        image: "../images/products/towel-2.jpg",
+        image: "images/products/towel-2.jpg",
         name: "Towels - Variations",
         priceCedis: 9000,
         rating: {
@@ -34,7 +34,7 @@ export const products = [
 
     {
         id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-        image: "../images/products/women-floral-handbag.jpg",
+        image: "images/products/women-floral-handbag.jpg",
         name: "Women Floral Handbag",
         priceCedis: 15000,
         rating: {
@@ -45,7 +45,7 @@ export const products = [
 
     {
         id: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
-        image: "../images/products/jacket.jpg",
+        image: "images/products/jacket.jpg",
         name: "Winter Jacket - Black",
         priceCedis: 11090,
         rating: {
@@ -56,7 +56,7 @@ export const products = [
 
     {
         id: "54e0eccd-8f36-462b-b68a-8182611d9add",
-        image: "../images/products/men-chronograph-watch.jpg",
+        image: "images/products/men-chronograph-watch.jpg",
         name: "Men Silver Wriste Watch",
         priceCedis: 8000,
         rating: {
@@ -67,7 +67,7 @@ export const products = [
 
     {
         id: "3ebe75dc-64d2-4137-8860-1f5a963e534b",
-        image: "../images/products/men-chunky-trail-style-atletic-sneaker.jpg",
+        image: "images/products/men-chunky-trail-style-atletic-sneaker.jpg",
         name: "Men atletic Sneaker",
         priceCedis: 16000,
         rating: {
@@ -78,7 +78,7 @@ export const products = [
 
     {
         id: "8c9c52b5-5a19-4bcb-a5d1-158a74287c53",
-        image: "../images/products/women-high-heels-yellow.jpg",
+        image: "images/products/women-high-heels-yellow.jpg",
         name: "Women High Heels - Yellow",
         priceCedis: 11000,
         rating: {
@@ -89,7 +89,7 @@ export const products = [
 
     {
         id: "dd82ca78-a18b-4e2a-9250-31e67412f98d",
-        image: "../images/products/men-two-tone-black-and-brown-shirt.jpg",
+        image: "images/products/men-two-tone-black-and-brown-shirt.jpg",
         name: "Men Shirt - Black & Brown",
         priceCedis: 25000,
         rating: {
@@ -100,7 +100,7 @@ export const products = [
 
     {
         id: "77919bbe-0e56-475b-adde-4f24dfed3a04",
-        image: "../images/products/men-chunky-white-sneaker.jpg",
+        image: "images/products/men-chunky-white-sneaker.jpg",
         name: "Men Sneaker - white",
         priceCedis: 14000,
         rating: {
@@ -111,7 +111,7 @@ export const products = [
 
     {
         id: "3fdfe8d6-9a15-4979-b459-585b0d0545b9",
-        image: "../images/products/men-generic-fashion-sneaker-white.jpg",
+        image: "images/products/men-generic-fashion-sneaker-white.jpg",
         name: "Men Generic Fashion Sneaker",
         priceCedis: 19000,
         rating: {
@@ -122,7 +122,7 @@ export const products = [
 
     {
         id: "58b4fc92-e98c-42aa-8c55-b6b79996769a",
-        image: "../images/products/women-metallic-mini-handbag.jpg",
+        image: "images/products/women-metallic-mini-handbag.jpg",
         name: "Women Mini Handbag",
         priceCedis: 12000,
         rating: {
@@ -133,7 +133,7 @@ export const products = [
 
     {
         id: "5968897c-4d27-4872-89f6-5bcb052746d7",
-        image: "../images/products/men-luxury-wristwatch.jpg",
+        image: "images/products/men-luxury-wristwatch.jpg",
         name: "Men Luxury Wristwatch",
         priceCedis: 10000,
         rating: {
@@ -144,7 +144,7 @@ export const products = [
 
     {
         id: "aad29d11-ea98-41ee-9285-b916638cac4a",
-        image: "../images/products/mens-striped-polo-t-shirt.jpg",
+        image: "images/products/mens-striped-polo-t-shirt.jpg",
         name: "Men Polo T-shirt",
         priceCedis: 7000,
         rating: {
@@ -155,7 +155,7 @@ export const products = [
 
     {
         id: "04701903-bc79-49c6-bc11-1af7e3651358",
-        image: "../images/products/women-off-shoulder-green-dress.jpg",
+        image: "images/products/women-off-shoulder-green-dress.jpg",
         name: "Women Off-Shoulder Green Dress",
         priceCedis: 16000,
         rating: {
@@ -166,7 +166,7 @@ export const products = [
 
     {
         id: "901eb2ca-386d-432e-82f0-6fb1ee7bf969",
-        image: "../images/products/mens-black-and-gray-low-top-sneaker.jpg",
+        image: "images/products/mens-black-and-gray-low-top-sneaker.jpg",
         name: "Men Sneaker - Gray & Black",
         priceCedis: 11050,
         rating: {
@@ -177,7 +177,7 @@ export const products = [
 
     {
         id: "82bb68d7-ebc9-476a-989c-c78a40ee5cd9",
-        image: "../images/products/mens-black-white-chunky-sport-sneakers.jpg",
+        image: "images/products/mens-black-white-chunky-sport-sneakers.jpg",
         name: "Men Sport sneaker - Black & white",
         priceCedis: 13000,
         rating: {
@@ -188,7 +188,7 @@ export const products = [
 
     {
         id: "c2a82c5e-aff4-435f-9975-517cfaba2ece",
-        image: "../images/products/mens-black-luxury-watch.jpg",
+        image: "images/products/mens-black-luxury-watch.jpg",
         name: "Men Luxury Watch",
         priceCedis: 6000,
         rating: {
@@ -199,7 +199,7 @@ export const products = [
 
     {
         id: "6b07d4e7-f540-454e-8a1e-363f25dbae7d",
-        image: "../images/products/women-white-dress-heels.jpg",
+        image: "images/products/women-white-dress-heels.jpg",
         name: "Women Luxury Heels",
         priceCedis: 25000,
         rating: {
@@ -210,7 +210,7 @@ export const products = [
 
     {
         id: "a82c6bac-3067-4e68-a5ba-d827ac0be010",
-        image: "../images/products/mens-cream-brown-fashion-sneakers.jpg",
+        image: "images/products/mens-cream-brown-fashion-sneakers.jpg",
         name: "Men Fashion Sneaker - Brown",
         priceCedis: 14000,
         rating: {
@@ -221,7 +221,7 @@ export const products = [
 
     {
         id: "e4f64a65-1377-42bc-89a5-e572d19252e2",
-        image: "../images/products/women-quilted-shoulder-handbag.jpg",
+        image: "images/products/women-quilted-shoulder-handbag.jpg",
         name: "Women Shoulder Handbag",
         priceCedis: 15000,
         rating: {
@@ -232,7 +232,7 @@ export const products = [
 
     {
         id: "b0f17cc5-8b40-4ca5-9142-b61fe3d98c85",
-        image: "../images/products/mens-white-red-retro-basketball-sneaker.jpg",
+        image: "images/products/mens-white-red-retro-basketball-sneaker.jpg",
         name: "Men basketball Sneaker- Red & white",
         priceCedis: 12000,
         rating: {
@@ -243,7 +243,7 @@ export const products = [
 
     {
         id: "a93a101d-79ef-4cf3-a6cf-6dbe532a1b4a",
-        image: "../images/products/womens-jean-collection.jpg",
+        image: "images/products/womens-jean-collection.jpg",
         name: "Women Jean collection",
         priceCedis: 11000,
         rating: {
@@ -254,7 +254,7 @@ export const products = [
 
     {
         id: "4f4fbcc2-4e72-45cc-935c-9e13d79cc57f",
-        image: "../images/products/men-white-air-bubble-designer-fashion-sneaker.jpg",
+        image: "images/products/men-white-air-bubble-designer-fashion-sneaker.jpg",
         name: "Men Designer Sneaker - White",
         priceCedis: 23000,
         rating: {
@@ -265,7 +265,7 @@ export const products = [
 
     {
         id: "8b5a2ee1-6055-422a-a666-b34ba28b76d4",
-        image: "../images/products/men-sport-running-sneaker.jpg",
+        image: "images/products/men-sport-running-sneaker.jpg",
         name: "Men Sport Running Sneaker",
         priceCedis: 20000,
         rating: {
@@ -276,7 +276,7 @@ export const products = [
 
     {
         id: "b86ddc8b-3501-4b17-9889-a3bad6fb585f",
-        image: "../images/products/women-floral-mini-handbag.jpg",
+        image: "images/products/women-floral-mini-handbag.jpg",
         name: "Women Floral Mini Handbag",
         priceCedis: 18000,
         rating: {
@@ -287,7 +287,7 @@ export const products = [
 
     {
         id: "19c6a64a-5463-4d45-9af8-e41140a4100c",
-        image: "../images/products/mens-green-street-style-sneaker.jpg",
+        image: "images/products/mens-green-street-style-sneaker.jpg",
         name: "Men Street Sneaker",
         priceCedis: 9050,
         rating: {
@@ -298,7 +298,7 @@ export const products = [
 
     {
         id: "d2785924-743d-49b3-8f03-ec258e640503",
-        image: "../images/products/men-black-white-patterned-sneaker.jpg",
+        image: "images/products/men-black-white-patterned-sneaker.jpg",
         name: "Men Patterned Sneaker - Black & White",
         priceCedis: 16000,
         rating: {
@@ -309,7 +309,7 @@ export const products = [
 
     {
         id: "1c079479-8586-494f-ab53-219325432536",
-        image: "../images/products/men-white-red-retro-basketball-sneakers.jpg",
+        image: "images/products/men-white-red-retro-basketball-sneakers.jpg",
         name: "Men basketball Sneaker-White & red",
         priceCedis: 10000,
         rating: {
@@ -320,7 +320,7 @@ export const products = [
 
     {
         id: "4e37dd03-3b23-4bc6-9ff8-44e112a92c64",
-        image: "../images/products/men-white-platform-casual-sneaker.jpg",
+        image: "images/products/men-white-platform-casual-sneaker.jpg",
         name: "Men Casual Sneaker",
         priceCedis: 9500,
         rating: {
@@ -331,7 +331,7 @@ export const products = [
 
     {
         id: "4df68c27-fd59-4a6a-bbd1-e754ddb6d53c",
-        image: "../images/products/men-beige-and-white-urban-sneaker.jpg",
+        image: "images/products/men-beige-and-white-urban-sneaker.jpg",
         name: "Men Urban Sneaker - Beige",
         priceCedis: 13080,
         rating: {
@@ -342,7 +342,7 @@ export const products = [
 
     {
         id: "a93a101d-79ef-4cf3-a6cf-6dbe532a1b4a",
-        image: "../images/products/womens-jean-collection.jpg",
+        image: "images/products/womens-jean-collection.jpg",
         name: "Women Jean collection",
         priceCedis: 11090,
         rating: {
@@ -353,7 +353,7 @@ export const products = [
 
     {
         id: "a434b69f-1bc1-482d-9ce7-cd7f4a66ce8d",
-        image: "../images/products/men-green-white-patterned-sneaker.jpg",
+        image: "images/products/men-green-white-patterned-sneaker.jpg",
         name: "Men Patterned Sneaker - Green & White",
         priceCedis: 11000,
         rating: {
@@ -364,7 +364,7 @@ export const products = [
 
     {
         id: "0d7f9afa-2efe-4fd9-b0fd-ba5663e0a524",
-        image: "../images/products/towel.jpg",
+        image: "images/products/towel.jpg",
         name: "Luxury Towels - Variations",
         priceCedis: 11070,
         rating: {
@@ -375,7 +375,7 @@ export const products = [
 
     {
         id: "36c64692-677f-4f58-b5ec-0dc2cf109e27",
-        image: "../images/products/jacket.jpg",
+        image: "images/products/jacket.jpg",
         name: "Winter Jacket - Black",
         priceCedis: 11090,
         rating: {
