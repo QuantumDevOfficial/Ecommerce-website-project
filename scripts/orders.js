@@ -118,7 +118,7 @@ function renderFavoritePage() {
 
                     <div class="favorites-product-container-body-card-detail">
                         <div class="favorites-product-name-container">${product.name}</div>
-                    <div class="favorites-product-price-container">${formatCurrency(product.priceCedis)}</div>
+                    <div class="favorites-product-price-container">Gh¢${formatCurrency(product.priceCedis)}</div>
                     <div class="favorites-product-checkout-container">
                         <button class="checkout-now">Checkout Now</button>
                     </div>
