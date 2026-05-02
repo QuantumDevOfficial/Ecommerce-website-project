@@ -1,6 +1,6 @@
 import {products} from "./data.js";
 import {addToCart, updateCartQuantity} from "./cart.js";
-import {toggleFavorite} from "./favorites.js"
+import {toggleFavorite, favorites} from "./favorites.js"
 
 
 
@@ -63,7 +63,7 @@ products.forEach((product) => {
                     <option value="10">10</option>
                 </select>
 
-                <button onclick="activation(event)" class="add-to-favarite" data-product-id="${product.id}">
+                <button onclick="activation(event)" class="add-to-favarite js-add-to-favarite" data-product-id="${product.id}">
                     <img class="activated" src="images/icons/icons8-favorite-24 (2).png" alt="">
                     <img class="deactivated" src="images/icons/icons8-favorite-24.png" alt="">
                 </button>
@@ -93,4 +93,19 @@ cartButton.forEach((button)=> {
         addToCart(productId);
         updateCartQuantity();
     });
+});
+
+const favoriteButtons = document.querySelectorAll('.js-add-to-favarite');
+favoriteButtons.forEach((button) => {
+    const productId = button.dataset.productId;
+    const isfavorite = favorites.some((item) => item.productId === productId);
+
+    if (isfavorite) {
+        const activated = button.querySelector('.activated');
+        const deactivated = button.querySelector('.deactivated');
+        activated.classList.add('deactivated');
+        activated.classList.remove('activated');
+        deactivated.classList.add('activated');
+        deactivated.classList.remove('deactivated');
+    }
 });
