@@ -109,3 +109,31 @@ favoriteButtons.forEach((button) => {
         deactivated.classList.remove('deactivated');
     }
 });
+
+const timeDisplay = document.querySelector('.flash-time');
+let flashSaleEndDate = localStorage.getItem('flashSaleEndTime');
+
+if (!flashSaleEndDate) {
+    flashSaleEndDate = new Date().getTime() + (24 * 60 * 60 * 1000);
+    localStorage.setItem('flashSaleEndTime', flashSaleEndDate);
+} else {
+    flashSaleEndDate = parseInt(flashSaleEndDate);
+}
+
+const countdownTimer = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = flashSaleEndDate - now;
+
+    if (distance <= 0) {
+        clearInterval(countdownTimer);
+        timeDisplay.textContent = "00h : 00m : 00s";
+        localStorage.removeItem('flashSaleEndTime');
+        return;
+    }
+
+    const hours = String(Math.floor(distance / (1000 * 60 * 60))).padStart(2, '0');
+    const minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+    const seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+
+    timeDisplay.textContent = `${hours}h : ${minutes}m : ${seconds}s`;
+}, 1000);

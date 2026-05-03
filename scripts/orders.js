@@ -36,7 +36,7 @@ function renderOrdersPage() {
                             </div>
 
                             <div>
-                                <button class="explore-button">
+                                <button class="explore-button" onclick="window.location.href = 'home.html'">
                                     Explore More
                                 </button>
                             </div>
