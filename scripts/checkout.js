@@ -1,5 +1,5 @@
 import {products, deliveryOptions, getProduct, addToOrder} from "./data.js";
-import {cart, removeFromCart, updateDeliveryOptionId, resetCart} from "./cart.js";
+import {cart, removeFromCart, updateDeliveryOptionId, resetCart, saveToStorge} from "./cart.js";
 import {formatCurrency} from "./utils.js";
 
 function updateCheckOutQuantity() {
@@ -86,6 +86,7 @@ export function renderPaymentSummery() {
     document.querySelector('.js-total').innerHTML = formatCurrency(amountPayable);
 };
 
+let updateId = '';
 function renderCheckoutPage() {
     updateCheckOutQuantity();
     if (cart.length === 0) {
@@ -145,7 +146,7 @@ function renderCheckoutPage() {
                                 <div class="product-price">Gh¢${(cartObject.priceCedis / 100).toFixed(2)}</div>
                                 <div class="product-quantity">
                                     Quantity:<span>${cartItem.productQuantity}</span>
-                                    <span class="product-quantity-link">Update</span>
+                                    <span class="product-quantity-link js-product-quantity-link" data-product-id="${cartItem.productId}">Update</span>
                                     <span class="product-quantity-link js-delete-link" data-product-id="${cartItem.productId}">Delete</span>
                                 </div>
                             </div>
@@ -169,6 +170,14 @@ function renderCheckoutPage() {
                 removeFromCart(deleteItem);
                 renderPaymentSummery();
                 renderCheckoutPage();
+            });
+        });
+
+        const updateButton = document.querySelectorAll('.js-product-quantity-link');
+        updateButton.forEach((updateLink)=> {
+            updateLink.addEventListener('click', ()=> {
+                document.querySelector('.js-update-box').classList.remove('pop-up-hider')
+                updateId = updateLink.dataset.productId;
             });
         });
 
@@ -245,6 +254,31 @@ export function addOrders() {
     resetCart();
     window.location.href = 'orders.html';
 };
+
+document.querySelector('.js-update-button').addEventListener('click', ()=>{
+    const inputedValue = Number(document.querySelector('.js-update-input').value)
+    cart.forEach((cartItem)=> {
+        if (cartItem.productId === updateId) {
+            if (inputedValue < 1) {
+                cartItem.productQuantity = 1;
+            }
+
+            else {
+                cartItem.productQuantity = inputedValue;
+            }
+
+            saveToStorge();
+            document.querySelector('.js-update-box').classList.add('pop-up-hider')
+            document.querySelector('.js-update-input').value = '';
+            renderPaymentSummery();
+            renderCheckoutPage();
+        };
+    });
+});
+
+document.querySelector('.js-update-close-btn').addEventListener('click', ()=>{
+    document.querySelector('.js-update-box').classList.add('pop-up-hider');
+});
 
 renderPaymentSummery()
 
