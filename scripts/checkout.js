@@ -153,7 +153,6 @@ function renderCheckoutPage() {
 
                         <div class="products-delivery-option">
                             <div class="delivery-option-label">Choose method of delivery</div>
-
                             ${deliveryOptionHTML(cartObject, cartItem)}
                         </div>
                     </div>

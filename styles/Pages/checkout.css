@@ -267,7 +267,7 @@ main {
     font-size: 18px;
 }
 
-button {
+.order-button {
     margin: 10px 20px;
     width: 89%;
     padding: 10px 0;
@@ -295,7 +295,6 @@ button:active {
 ::view-transition-new(root) {
   animation-duration: 0.3s;
 }
-
 
 /* Mobile Phone size for checkout */
 
